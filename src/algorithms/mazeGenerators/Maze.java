@@ -6,31 +6,40 @@ public class Maze {
     private int column;
     private Position StartPosition;
     private Position GoalPosition;
+
     public Maze(int rows, int columns) {
         this.rows = rows;
-        this.column= columns;
-        this.MazeArray=new int[rows][columns];
-        this.StartPosition=new Position(0,0);
-        this.GoalPosition=new Position(rows-1,columns-1);
+        this.column = columns;
+        this.MazeArray = new int[rows][columns];
+        this.StartPosition = new Position(0, 0);
+        this.GoalPosition = new Position(rows - 1, columns - 1);
     }
 
-    public void setStartPosition(Position startPosition) {
-        StartPosition = startPosition;
+    public void setStartPosition(Position start) {
+        if (start.legalMove(start.getRowPosition(), start.getColPosition())) {
+            StartPosition = start;
+        }
     }
 
-    public void setGoalPosition(Position goalPosition) {
-        GoalPosition = goalPosition;
+    public void setGoalPosition(Position goal) {
+        if (goal.legalMove(goal.getRowPosition(), goal.getColPosition())) {
+            GoalPosition = goal;
+        }
     }
 
-    public Position getStartPosition(int rows,int column) {
-
-
+    public Position getStartPosition() {
+        if (rows >= 0 || column >= 0) {
+            return this.StartPosition;
+        }
+        return null;
     }
 
     public Position getGoalPosition() {
-        return GoalPosition;
+        if (rows >= 0 || column >= 0){
+            return GoalPosition;
     }
-
+        return null;
+}
     public int getRows(){
         return this.rows;
     }
@@ -52,14 +61,12 @@ public class Maze {
                 MazeArray[rows][column] = i;
             }
         }
-      public boolean legalMove(int row,int col){
-         if(row<0||col<0) {
-             return false;
-         }
-         return true;
-    }
+        public  void print(){
 
         }
+
+
+}
 
 
 

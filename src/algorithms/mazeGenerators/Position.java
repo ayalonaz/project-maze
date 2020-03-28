@@ -34,6 +34,11 @@ public class Position {
         }
         return null;
     }
+    public boolean legalMove(int row,int col) {
+        if (row < 0 || col < 0) {
+            return false;
+        }
+        return true;
+    }
 
-
-}
+    }
